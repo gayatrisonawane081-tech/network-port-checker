@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Network Port Checker</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background"></div>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header class="header">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    🌐
+                </div>
+
+                <div>
+                    <h1>Network Port Checker</h1>
+
+                    <p>
+                        Python Network Diagnostic Tool
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="status-indicator">
+
+                <span class="status-dot"></span>
+
+                <span>System Ready</span>
+
+            </div>
+
+        </header>
+
+
+        <!-- Main Dashboard -->
+        <main>
+
+            <!-- Scanner Card -->
+            <section class="card scanner-card">
+
+                <div class="section-title">
+
+                    <div>
+                        <h2>Port Scanner</h2>
+
+                        <p>
+                            Check the status of TCP network ports.
+                        </p>
+                    </div>
+
+                    <div class="shield">
+                        🛡️
+                    </div>
+
+                </div>
+
+
+                <!-- Form -->
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label for="target">
+                            IP Address / Hostname
+                        </label>
+
+                        <input
+                            type="text"
+                            id="target"
+                            placeholder="e.g. 127.0.0.1"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="port">
+                            Port Number
+                        </label>
+
+                        <input
+                            type="number"
+                            id="port"
+                            placeholder="e.g. 80"
+                            min="1"
+                            max="65535"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="button-group">
+
+                    <button
+                        id="checkPortBtn"
+                        class="btn primary"
+                    >
+                        <span>🔍</span>
+                        Check Port
+                    </button>
+
+
+                    <button
+                        id="scanCommonBtn"
+                        class="btn secondary"
+                    >
+                        <span>📡</span>
+                        Scan Common Ports
+                    </button>
+
+
+                    <button
+                        id="clearBtn"
+                        class="btn danger"
+                    >
+                        <span>🗑️</span>
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <!-- Progress -->
+                <div
+                    id="progressContainer"
+                    class="progress-container hidden"
+                >
+
+                    <div class="progress-info">
+
+                        <span id="progressText">
+                            Scanning...
+                        </span>
+
+                        <span id="progressPercent">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div
+                            id="progressFill"
+                            class="progress-fill"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Statistics -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <p>Total Ports</p>
+
+                        <h3 id="totalPorts">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        🟢
+                    </div>
+
+                    <div>
+
+                        <p>Open Ports</p>
+
+                        <h3 id="openPorts">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon red">
+                        🔴
+                    </div>
+
+                    <div>
+
+                        <p>Closed Ports</p>
+
+                        <h3 id="closedPorts">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ⚡
+                    </div>
+
+                    <div>
+
+                        <p>Target</p>
+
+                        <h3
+                            id="targetDisplay"
+                            class="target-value"
+                        >
+                            —
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Results -->
+            <section class="card results-card">
+
+                <div class="results-header">
+
+                    <div>
+
+                        <h2>Scan Results</h2>
+
+                        <p id="resultMessage">
+                            No scan performed yet.
+                        </p>
+
+                    </div>
+
+                    <div
+                        id="scanStatus"
+                        class="scan-badge ready"
+                    >
+                        READY
+                    </div>
+
+                </div>
+
+
+                <!-- Table -->
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Port</th>
+
+                                <th>Service</th>
+
+                                <th>Status</th>
+
+                                <th>Response Time</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="resultsBody">
+
+                            <tr class="empty-row">
+
+                                <td colspan="4">
+
+                                    <div class="empty-state">
+
+                                        <div class="empty-icon">
+                                            📡
+                                        </div>
+
+                                        <h3>
+                                            No Results Yet
+                                        </h3>
+
+                                        <p>
+                                            Enter a target and start
+                                            a port scan.
+                                        </p>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- Common Ports -->
+            <section class="card common-card">
+
+                <div class="section-title">
+
+                    <div>
+
+                        <h2>Common Network Ports</h2>
+
+                        <p>
+                            Ports included in the common port scan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="port-chips">
+
+                    <div class="port-chip">
+
+                        <strong>21</strong>
+
+                        <span>FTP</span>
+
+                    </div>
+
+                    <div class="port-chip">
+
+                        <strong>22</strong>
+
+                        <span>SSH</span>
+
+                    </div>
+
+                    <div class="port-chip">
+
+                        <strong>25</strong>
+
+                        <span>SMTP</span>
+
+                    </div>
+
+                    <div class="port-chip">
+
+                        <strong>53</strong>
+
+                        <span>DNS</span>
+
+                    </div>
+
+                    <div class="port-chip">
+
+                        <strong>80</strong>
+
+                        <span>HTTP</span>
+
+                    </div>
+
+                    <div class="port-chip">
+
+                        <strong>443</strong>
+
+                        <span>HTTPS</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- Footer -->
+        <footer>
+
+            <p>
+                Network Port Checker • Built with
+                Python, Flask, HTML, CSS & JavaScript
+            </p>
+
+            <p class="warning">
+                Use only on systems you are authorized to test.
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}">
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,840 @@
+/* ==========================================
+   GENERAL
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #0f172a;
+
+    color: #f8fafc;
+
+    min-height: 100vh;
+}
+
+
+/* Background */
+
+.background {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(16, 185, 129, 0.12),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(59, 130, 246, 0.10),
+            transparent 30%
+        );
+}
+
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.container {
+    width: min(1200px, 94%);
+
+    margin: auto;
+
+    padding: 30px 0 20px;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.brand-icon {
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #1e293b;
+
+    border: 1px solid #334155;
+
+    font-size: 27px;
+}
+
+
+.brand h1 {
+    font-size: 28px;
+
+    margin-bottom: 4px;
+}
+
+
+.brand p {
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+.status-indicator {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 14px;
+
+    border-radius: 20px;
+
+    background: #1e293b;
+
+    border: 1px solid #334155;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+}
+
+
+.status-dot {
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #10b981;
+
+    box-shadow:
+        0 0 10px #10b981;
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.card {
+    background: rgba(30, 41, 59, 0.92);
+
+    border: 1px solid #334155;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+.section-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+
+.section-title h2 {
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+
+.section-title p {
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+.shield {
+    font-size: 28px;
+}
+
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+.input-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.input-group label {
+    font-size: 13px;
+
+    color: #cbd5e1;
+
+    font-weight: 600;
+}
+
+
+.input-group input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    border: 1px solid #475569;
+
+    background: #0f172a;
+
+    color: #f8fafc;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+
+.input-group input:focus {
+    border-color: #10b981;
+
+    box-shadow:
+        0 0 0 3px rgba(16, 185, 129, 0.10);
+}
+
+
+.input-group input::placeholder {
+    color: #64748b;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.button-group {
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.btn {
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 12px 18px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.btn:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.btn.primary {
+    background: #10b981;
+
+    color: #052e1b;
+}
+
+
+.btn.primary:hover {
+    background: #34d399;
+}
+
+
+.btn.secondary {
+    background: #334155;
+
+    color: #f8fafc;
+}
+
+
+.btn.secondary:hover {
+    background: #475569;
+}
+
+
+.btn.danger {
+    background: #3f2930;
+
+    color: #fca5a5;
+}
+
+
+.btn.danger:hover {
+    background: #5a2d37;
+}
+
+
+/* ==========================================
+   PROGRESS BAR
+========================================== */
+
+.progress-container {
+    margin-top: 22px;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+.progress-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 12px;
+
+    color: #94a3b8;
+}
+
+
+.progress-bar {
+    width: 100%;
+
+    height: 7px;
+
+    background: #0f172a;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+.progress-fill {
+    width: 0%;
+
+    height: 100%;
+
+    background: #10b981;
+
+    border-radius: 10px;
+
+    transition: width 0.3s ease;
+}
+
+
+/* ==========================================
+   STATISTICS
+========================================== */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+.stat-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    background: #1e293b;
+
+    border: 1px solid #334155;
+
+    border-radius: 16px;
+}
+
+
+.stat-icon {
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+}
+
+
+.stat-icon.blue {
+    background: #172554;
+}
+
+
+.stat-icon.green {
+    background: #052e1b;
+}
+
+
+.stat-icon.red {
+    background: #450a0a;
+}
+
+
+.stat-icon.purple {
+    background: #2e1065;
+}
+
+
+.stat-card p {
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    margin-bottom: 4px;
+}
+
+
+.stat-card h3 {
+    font-size: 21px;
+}
+
+
+.target-value {
+    max-width: 150px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   RESULTS
+========================================== */
+
+.results-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.results-header h2 {
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+
+.results-header p {
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+.scan-badge {
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+
+.scan-badge.ready {
+    background: #334155;
+
+    color: #cbd5e1;
+}
+
+
+.scan-badge.scanning {
+    background: #172554;
+
+    color: #93c5fd;
+}
+
+
+.scan-badge.complete {
+    background: #052e1b;
+
+    color: #6ee7b7;
+}
+
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+th {
+    text-align: left;
+
+    padding: 13px;
+
+    font-size: 12px;
+
+    color: #94a3b8;
+
+    background: #0f172a;
+
+    border-bottom: 1px solid #334155;
+}
+
+
+td {
+    padding: 14px 13px;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid #334155;
+
+    color: #cbd5e1;
+}
+
+
+tbody tr {
+    transition: 0.2s;
+}
+
+
+tbody tr:hover {
+    background: rgba(51, 65, 85, 0.3);
+}
+
+
+/* ==========================================
+   STATUS BADGES
+========================================== */
+
+.status-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.status-badge.open {
+    background: #052e1b;
+
+    color: #6ee7b7;
+}
+
+
+.status-badge.closed {
+    background: #450a0a;
+
+    color: #fca5a5;
+}
+
+
+.status-badge.other {
+    background: #422006;
+
+    color: #fcd34d;
+}
+
+
+/* ==========================================
+   EMPTY STATE
+========================================== */
+
+.empty-state {
+    padding: 50px 20px;
+
+    text-align: center;
+}
+
+
+.empty-icon {
+    font-size: 35px;
+
+    margin-bottom: 10px;
+}
+
+
+.empty-state h3 {
+    margin-bottom: 6px;
+}
+
+
+.empty-state p {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   COMMON PORTS
+========================================== */
+
+.common-card {
+    margin-bottom: 25px;
+}
+
+
+.port-chips {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 12px;
+}
+
+
+.port-chip {
+    padding: 15px;
+
+    text-align: center;
+
+    background: #0f172a;
+
+    border: 1px solid #334155;
+
+    border-radius: 12px;
+
+    transition: 0.2s;
+}
+
+
+.port-chip:hover {
+    border-color: #10b981;
+
+    transform: translateY(-3px);
+}
+
+
+.port-chip strong {
+    display: block;
+
+    font-size: 18px;
+
+    color: #34d399;
+
+    margin-bottom: 4px;
+}
+
+
+.port-chip span {
+    font-size: 11px;
+
+    color: #94a3b8;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    padding: 10px 0 20px;
+}
+
+
+.warning {
+    margin-top: 5px;
+
+    color: #f59e0b;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .port-chips {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .container {
+        width: 92%;
+    }
+
+
+    .header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .port-chips {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .button-group {
+        flex-direction: column;
+    }
+
+
+    .btn {
+        justify-content: center;
+    }
+
+
+    .results-header {
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+}
