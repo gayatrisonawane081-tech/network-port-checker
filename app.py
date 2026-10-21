@@ -1,8 +1,15 @@
-from flask import Flask, render_template, request, jsonify
+import os
 import socket
 import time
 
-app = Flask(__name__)
+from flask import Flask, render_template, request, jsonify
+
+app = Flask(
+    __name__,
+    template_folder="frontend",
+    static_folder=None if os.environ.get("VERCEL") else "public",
+    static_url_path=""
+)
 
 # Common ports required for the project
 COMMON_PORTS = {
